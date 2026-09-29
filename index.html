@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reporte Profesional</title>
+    <!-- CSS3: Estilos y diseño moderno -->
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #3498db;
+            --bg-color: #f4f6f9;
+            --text-color: #333;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .report-container {
+            background: #ffffff;
+            width: 100%;
+            max-width: 800px;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        header {
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .report-title h1 {
+            margin: 0;
+            color: var(--primary-color);
+            font-size: 24px;
+        }
+
+        .report-meta {
+            font-size: 14px;
+            color: #666;
+            text-align: right;
+        }
+
+        section {
+            margin-bottom: 25px;
+        }
+
+        h2 {
+            color: var(--primary-color);
+            font-size: 18px;
+            border-left: 4px solid var(--accent-color);
+            padding-left: 10px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            line-height: 1.6;
+            margin: 0 0 10px 0;
+        }
+
+        .highlight-box {
+            background-color: #ebf5fb;
+            border-left: 4px solid var(--accent-color);
+            padding: 15px;
+            border-radius: 4px;
+            margin: 15px 0;
+        }
+
+        .btn-container {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        button {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        /* Ocultar el botón al imprimir o guardar en PDF */
+        @media print {
+            .btn-container {
+                display: none;
+            }
+            body {
+                background: white;
+                padding: 0;
+            }
+            .report-container {
+                box-shadow: none;
+                padding: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="report-container">
+        
+        <!-- ========================================== -->
+        <!-- ZONA 1: ENCABEZADO (Modifica aquí los datos) -->
+        <!-- ========================================== -->
+        <header>
+            <div class="report-title">
+                <h1>Reporte semanal</h1>
+                <p>Ideas e aclaraciones sobre mi proyecto</p>
+            </div>
+            <div class="report-meta">
+                <p><strong>Fecha:</strong> <span id="fecha-actual"></span></p>
+                <p><strong>Autor:</strong> Tu Nombre Aquí</p>
+            </div>
+        </header>
+
+        <main>
+            <!-- ========================================== -->
+            <!-- ZONA 2: INTRODUCCIÓN O RESUMEN EJECUTIVO -->
+            <!-- ========================================== -->
+            <section>
+                <h2>1. Resumen Ejecutivo</h2>
+                <p>
+                    Sigue siendo nuestra idea sobre nuestro proyecto el que sean ya sean armaduras  o vigas impresas en 3D simples y complejas y de diferentes tamaños y formas, que puedan ser utilizadas en diferentes areas de la ingenieria civil
+                </p>
+            </section>
+
+            <!-- ========================================== -->
+            <!-- ZONA 3: DESARROLLO O CUERPO DEL REPORTE -->
+            <!-- ========================================== -->
+            <section>
+                <h2>2. Desarrollo </h2>
+                <p>
+                    Hasta ahora solo hemos estado puliendo ideas y conceptos sobre nuestro proyecto, pero ya tenemos una idea mas clara de lo que queremos hacer y como lo vamos a hacer, ya que hemos estado investigando sobre el tema y hemos encontrado diferentes formas de hacerlo, pero creemos que la mejor forma es la que estamos desarrollando actualmente. Con la impresora 3D podemos hacer diferentes formas y tamaños de armaduras y vigas, y podemos hacerlas de diferentes materiales, como PLA, ABS, PETG, etc. Esto nos permite hacer pruebas y ver cual es la mejor forma de hacerlo. Tambien podemos darnos idea de como calcular la resistencia de las armaduras y vigas, y podemos hacer pruebas para ver cual es la mejor forma de hacerlo. Esto nos permite tener una idea mas clara de como hacer nuestro proyecto y como hacerlo de la mejor forma posible.
+                </p>
+                <div class="highlight-box">
+                   
+            </section>
+
+            <!-- ========================================== -->
+            <!-- ZONA 4: CONCLUSIONES Y RESULTADOS -->
+            <!-- ========================================== -->
+            <section>
+                <h2>3. Conclusiones</h2>
+                <p>
+                    En conclusión, nuestro proyecto de impresión 3D para armaduras y vigas en ingeniería civil muestra un gran potencial para innovar en la construcción. Las pruebas realizadas nos permiten afirmar que esta tecnología puede mejorar significativamente la eficiencia y calidad de los componentes estructurales.
+                </p>
+            </section>
+        </main>
+
+        <!-- ========================================== -->
+        <!-- ZONA 5: BOTONES E INTERACTIVIDAD (JS) -->
+        <!-- ========================================== -->
+        <div class="btn-container">
+            <button onclick="imprimirReporte()">Imprimir / Guardar como PDF</button>
+        </div>
+
+    </div>
+
+    <!-- JavaScript: Funcionalidad interactiva -->
+    <script>
+        // Rellenar automáticamente la fecha actual en el reporte
+        const opciones = { year: 'numeric', month: 'long', day: 'numeric' };
+        const fechaHoy = new Date().toLocaleDateString('es-ES', opciones);
+        document.getElementById('fecha-actual').textContent = fechaHoy;
+
+        // Función para activar el diálogo de impresión del navegador
+        function imprimirReporte() {
+            window.print();
+        }
+    </script>
+</body>
+</html>
